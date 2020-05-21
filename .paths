@@ -1,0 +1,7 @@
+#.paths for use in defining paths across systems
+
+: '''
+This file captures paths across systems, loaded by the .bash_profile file
+
+PJD 20 May 2020     - Initialized file
+'''
