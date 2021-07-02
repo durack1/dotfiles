@@ -4,7 +4,8 @@
 : '''
 This file sets aliases across systems, loaded by the .bash_profile file
 
-PJD 20 May 2020     - Initialized file
+PJD 20 May 2020 	- Initialized file
+PJD  1 Jul 2021 	- Updated with rsync aliases
 '''
 
 # Easier navigation: .., ..., ...., ....., ~ and -
@@ -100,3 +101,9 @@ alias map="xargs -n1"
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# Rsync aliases for quick use
+alias rsynct="rsync -n -vruti --delete --inplace ${MACOSEXCLUDELIST}" ; # Run rsync with common arguments for trusty sync in test mode
+alias rsynctnd="rsync -n -vruti --inplace ${MACOSEXCLUDELIST}" ; # Run rsync with common arguments for trusty sync in test mode
+alias rsynctr="rsync -vruti --delete --inplace ${MACOSEXCLUDELIST}" ; # Run rsync with common arguments for trusty sync in test mode
+alias rsynctrnd="rsync -vruti --inplace ${MACOSEXCLUDELIST}" ; # Run rsync with common arguments for trusty sync

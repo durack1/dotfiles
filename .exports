@@ -5,7 +5,8 @@
 This file sets environment variables and systems defaults across systems,
 loaded by the .bash_profile file
 
-PJD 20 May 2020     - Initialized file
+PJD 20 May 2020 	- Initialized file
+PJD  1 Jul 2021 	- Updated with MacOS exclusion list
 '''
 
 # Make vim the default editor.
@@ -39,3 +40,6 @@ export MANPAGER='less -X';
 
 # Hide the “default interactive shell is now zsh” warning on macOS.
 export BASH_SILENCE_DEPRECATION_WARNING=1;
+
+# Set MacOS filesystem exclusions for rsync
+export MACOSEXCLUDELIST='--exclude=.DS_Store --exclude=.directory --exclude=.DocumentRevisions-V100 --exclude=.fseventsd --exclude=.Spotlight-V100 --exclude=.TemporaryItems --exclude=.Trashes --exclude=thumbs.db --exclude=Thumbs.db --exclude="PET0.ESMF_LogFile"'
