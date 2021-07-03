@@ -1,7 +1,14 @@
+#!/usr/bin/env bash
 #.paths for use in defining paths across systems
 
 : '''
 This file captures paths across systems, loaded by the .bash_profile file
 
-PJD 20 May 2020     - Initialized file
+PJD 20 May 2020 	- Initialized file
+PJD  2 Jul 2021 	- Added local binaries on MacOS 11.4
 '''
+
+if [ `uname` == 'Darwin' ]; then
+	export PATH="$HOME/sync/bin/macos11.4:$PATH"
+	echo "PATH: $PATH"
+fi
