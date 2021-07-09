@@ -4,9 +4,10 @@
 : '''
 This file sets aliases across systems, loaded by the .bash_profile file
 
-PJD 20 May 2020 	- Initialized file
-PJD  1 Jul 2021 	- Updated with rsync aliases
-PJD  2 Jul 2021 	- Added cl
+PJD 20 May 2020     - Initialized file
+PJD  1 Jul 2021     - Updated with rsync aliases
+PJD  2 Jul 2021     - Added cl
+PJD  9 Jul 2021     - Updated s
 '''
 
 # Easier navigation: .., ..., ...., ....., ~ and -
@@ -21,7 +22,7 @@ alias -- -="cd -"
 alias cl="clear"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias s="cd /sync"
+alias s="cd ~/sync"
 alias g="git"
 
 # Rsync aliases for quick use
@@ -30,7 +31,7 @@ alias rsynctnd="rsync -n -vruti --inplace ${MACOSEXCLUDELIST}" ; # Run rsync wit
 alias rsynctr="rsync -vruti --delete --inplace ${MACOSEXCLUDELIST}" ; # Run rsync with common arguments for trusty sync in test mode
 alias rsynctrnd="rsync -vruti --inplace ${MACOSEXCLUDELIST}" ; # Run rsync with common arguments for trusty sync
 
-
+### Harvested from other sources
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
