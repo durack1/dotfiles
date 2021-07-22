@@ -8,6 +8,7 @@ worth noting:
     https://github.com/webpro/dotfiles/blob/master/runcom/.bash_profile
     https://github.com/mathiasbynens/dotfiles/blob/master/.bash_profile
     https://github.com/doutriaux1/dotfiles/blob/master/.bashrc
+    https://www.gnu.org/software/bash/manual/html_node/Bash-Startup-Files.html#Bash-Startup-Files - .bash_profile vs .bashrc vs .profile etc
 
 PJD 20 May 2020     - Initialized file
 PJD  1 Jul 2021     - Updated with new durack1ml/MacOS11.4 paths
