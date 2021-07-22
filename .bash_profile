@@ -9,14 +9,21 @@ worth noting:
     https://github.com/mathiasbynens/dotfiles/blob/master/.bash_profile
     https://github.com/doutriaux1/dotfiles/blob/master/.bashrc
 
-PJD 20 May 2020 	- Initialized file
-PJD  1 Jul 2021 	- Updated with new durack1ml/MacOS11.4 paths
-PJD 22 Jul 2021 	- Updated to deal with system paths - MacOS/Linux
+PJD 20 May 2020     - Initialized file
+PJD  1 Jul 2021     - Updated with new durack1ml/MacOS11.4 paths
+PJD 22 Jul 2021     - Updated to deal with system paths - MacOS/Linux; SYNCPATH set system-dependent
+PJD 22 Jul 2021     - .bashrc symlink to .bash_profile created for RHEL7
 '''
 
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
-export SYNCPATH="$HOME/sync/git/dotfiles/";
+
+# Create system dependent SYNCPATH
+if [ `uname` == 'Linux' ]; then
+    export SYNCPATH="$HOME/git/dotfiles/";
+elif [ `uname` == 'Darwin' ]; then
+    export SYNCPATH="$HOME/sync/git/dotfiles/";
+fi
 
 # Load the shell dotfiles, and then some:
 # * ~/.paths can be used to extend `$PATH`.
@@ -56,4 +63,3 @@ elif [ `uname` == 'Darwin' ]; then
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-

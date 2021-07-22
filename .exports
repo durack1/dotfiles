@@ -5,17 +5,24 @@
 This file sets environment variables and systems defaults across systems,
 loaded by the .bash_profile file
 
-PJD 20 May 2020 	- Initialized file
-PJD  1 Jul 2021 	- Updated with MacOS exclusion list
-PJD 22 Jul 2021     - Updated with PYTHONPATH
+PJD 20 May 2020     - Initialized file
+PJD  1 Jul 2021     - Updated with MacOS exclusion list
+PJD 22 Jul 2021     - Updated with PYTHONPATH; Updated with HOMEPREFIX
 '''
 
 # Set MacOS filesystem exclusions for rsync
 export MACOSEXCLUDELIST='--exclude=.DS_Store --exclude=.directory --exclude=.DocumentRevisions-V100 --exclude=.fseventsd --exclude=.Spotlight-V100 --exclude=.TemporaryItems --exclude=.Trashes --exclude=thumbs.db --exclude=Thumbs.db --exclude="PET0.ESMF_LogFile"'
 
-export PYTHONPATH='/Users/durack1/sync/git/cmip3:/Users/durack1/sync/git/cmip5:/Users/durack1/sync/git/Density_bining:/Users/durack1/sync/git/durolib/durolib:'
+# Set system-dependent python paths
+if [ `uname` == 'Darwin' ]; then
+    HOMEPREFIX=/Users/durack1/sync/
+elif [ `uname` == 'Linux' ]; then
+    HOMEPREFIX=/home/durack1/
+fi
+export PYTHONPATH='$HOMEPREFIXgit/cmip3:$HOMEPREFIXgit/cmip5:$HOMEPREFIXgit/Density_bining:$HOMEPREFIXgit/durolib/durolib'
 
-#----------
+
+#---------- Other inherited exports
 
 # Make vim the default editor.
 export EDITOR='vim';
