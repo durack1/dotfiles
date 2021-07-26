@@ -8,6 +8,7 @@ loaded by the .bash_profile file
 PJD 20 May 2020     - Initialized file
 PJD  1 Jul 2021     - Updated with MacOS exclusion list
 PJD 22 Jul 2021     - Updated with PYTHONPATH; Updated with HOMEPREFIX
+PJD 26 Jul 2021     - Update HOMEPREFIX to be exported
 '''
 
 # Set MacOS filesystem exclusions for rsync
@@ -15,11 +16,11 @@ export MACOSEXCLUDELIST='--exclude=.DS_Store --exclude=.directory --exclude=.Doc
 
 # Set system-dependent python paths
 if [ `uname` == 'Darwin' ]; then
-    HOMEPREFIX=/Users/durack1/sync/
+    export HOMEPREFIX=/Users/durack1/sync/
 elif [ `uname` == 'Linux' ]; then
-    HOMEPREFIX=/home/durack1/
+    export HOMEPREFIX=/home/durack1/
 fi
-export PYTHONPATH='$HOMEPREFIXgit/cmip3:$HOMEPREFIXgit/cmip5:$HOMEPREFIXgit/Density_bining:$HOMEPREFIXgit/durolib/durolib'
+export PYTHONPATH=$HOMEPREFIX'git/cmip3:'$HOMEPREFIX'git/cmip5:'$HOMEPREFIX'git/Density_bining:'$HOMEPREFIX'git/durolib/durolib'
 
 
 #---------- Other inherited exports
