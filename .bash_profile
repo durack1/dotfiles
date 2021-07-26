@@ -14,6 +14,7 @@ PJD 20 May 2020     - Initialized file
 PJD  1 Jul 2021     - Updated with new durack1ml/MacOS11.4 paths
 PJD 22 Jul 2021     - Updated to deal with system paths - MacOS/Linux; SYNCPATH set system-dependent
 PJD 22 Jul 2021     - .bashrc symlink to .bash_profile created for RHEL7
+PJD 26 Jul 2021     - Convert echos to only interactive (not login) shell
 '''
 
 # Add `~/bin` to the `$PATH`
@@ -29,11 +30,13 @@ fi
 # Load the shell dotfiles, and then some:
 # * ~/.paths can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in .{paths,exports,aliases}; do
-	echo "sourcing file: $SYNCPATH$file"
-	[ -r "$SYNCPATH$file" ] && [ -f "$SYNCPATH$file" ] && source "$SYNCPATH$file";
-done;
-unset file;
+if shopt -q login_shell; then
+    for file in .{paths,exports,aliases}; do
+    	echo "sourcing file: $SYNCPATH$file"
+    	[ -r "$SYNCPATH$file" ] && [ -f "$SYNCPATH$file" ] && source "$SYNCPATH$file";
+    done;
+    unset file;
+fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
