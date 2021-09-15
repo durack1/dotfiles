@@ -15,27 +15,14 @@ PJD  1 Jul 2021     - Updated with new durack1ml/MacOS11.4 paths
 PJD 22 Jul 2021     - Updated to deal with system paths - MacOS/Linux; SYNCPATH set system-dependent
 PJD 22 Jul 2021     - .bashrc symlink to .bash_profile created for RHEL7
 PJD 26 Jul 2021     - Convert echos to only interactive (not login) shell
+PJD 15 Sep 2021     - Updated some path issues across files, overwrite conda precedence with shell dotfile load last
 '''
-
-# Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:$PATH";
 
 # Create system dependent SYNCPATH
 if [ `uname` == 'Linux' ]; then
     export SYNCPATH="$HOME/git/dotfiles/";
 elif [ `uname` == 'Darwin' ]; then
     export SYNCPATH="$HOME/sync/git/dotfiles/";
-fi
-
-# Load the shell dotfiles, and then some:
-# * ~/.paths can be used to extend `$PATH`.
-# * ~/.extra can be used for other settings you don’t want to commit.
-if shopt -q login_shell; then
-    for file in .{paths,exports,aliases}; do
-    	echo "sourcing file: $SYNCPATH$file"
-    	[ -r "$SYNCPATH$file" ] && [ -f "$SYNCPATH$file" ] && source "$SYNCPATH$file";
-    done;
-    unset file;
 fi
 
 # >>> conda initialize >>>
@@ -67,3 +54,14 @@ elif [ `uname` == 'Darwin' ]; then
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# Load the shell dotfiles last, and then some:
+# * ~/.paths can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you don’t want to commit.
+if shopt -q login_shell; then
+    for file in .{paths,exports,aliases}; do
+    	echo "sourcing file: $SYNCPATH$file"
+    	[ -r "$SYNCPATH$file" ] && [ -f "$SYNCPATH$file" ] && source "$SYNCPATH$file";
+    done;
+    unset file;
+fi

@@ -15,7 +15,7 @@ PJD 15 Sep 2021     - Updated to ensure /usr/bin comes first dbus-daemon issue w
 export MACPATH='/usr/local/bin:/bin:/usr/sbin:/sbin'  # Default MacOS11.4 path
 export RHELPATH='/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/lpp/mmfs/bin'  # Default Detect/RHEL7 path
 if [ `uname` == 'Darwin' ]; then
-	export PATH="$HOME/sync/bin/macos11.4:$MACPATH"
+	export PATH="/usr/bin:$HOME/sync/bin/macos11.4:$MACPATH"
 elif [ `uname` == 'Linux' ]; then
 	export PATH="$HOME/bin"
 	export PATH="/usr/bin:$PATH:$HOME/bin/downloads/p7zip16.02/191120_build/p7zip_16.02/bin:$RHELPATH"
