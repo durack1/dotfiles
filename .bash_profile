@@ -16,6 +16,7 @@ PJD 22 Jul 2021     - Updated to deal with system paths - MacOS/Linux; SYNCPATH 
 PJD 22 Jul 2021     - .bashrc symlink to .bash_profile created for RHEL7
 PJD 26 Jul 2021     - Convert echos to only interactive (not login) shell
 PJD 15 Sep 2021     - Updated some path issues across files, overwrite conda precedence with shell dotfile load last
+PJD 25 Jan 2022     - Updated to latest miniconda3 (macOS), conda block updated
 '''
 
 # Create system dependent SYNCPATH
@@ -28,29 +29,29 @@ fi
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 # Case Linux
-if [ `uname` == 'Linux' ]; then
-	__conda_setup="$('/home/durack1/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-	if [ $? -eq 0 ]; then
-	    eval "$__conda_setup"
-	else
-	    if [ -f "/home/durack1/anaconda3/etc/profile.d/conda.sh" ]; then
-		. "/home/durack1/anaconda3/etc/profile.d/conda.sh"
-	    else
-		export PATH="/home/durack1/anaconda3/bin:$PATH"
-	    fi
-	fi
-# Case MacOS
-elif [ `uname` == 'Darwin' ]; then
-	__conda_setup="$('/Users/durack1/opt/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-	if [ $? -eq 0 ]; then
-	    eval "$__conda_setup"
-	else
-	    if [ -f "/Users/durack1/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-	        . "/Users/durack1/opt/anaconda3/etc/profile.d/conda.sh"
-	    else
-	        export PATH="/Users/durack1/opt/anaconda3/bin:$PATH"
-	    fi
-	fi
+if [`uname` == 'Linux']; then
+    __conda_setup="$('/home/durack1/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/home/durack1/anaconda3/etc/profile.d/conda.sh" ]; then
+            . "/home/durack1/anaconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/home/durack1/anaconda3/bin:$PATH"
+        fi
+    fi
+# Case macOS
+elif [`uname` == 'Darwin']; then
+    __conda_setup="$('/Users/durack1/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/Users/durack1/miniconda3/etc/profile.d/conda.sh" ]; then
+            . "/Users/durack1/miniconda3/etc/profile.d/conda.sh"
+        else
+            export PATH="/Users/durack1/miniconda3/bin:$PATH"
+        fi
+    fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
