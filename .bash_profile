@@ -17,6 +17,7 @@ PJD 22 Jul 2021     - .bashrc symlink to .bash_profile created for RHEL7
 PJD 26 Jul 2021     - Convert echos to only interactive (not login) shell
 PJD 15 Sep 2021     - Updated some path issues across files, overwrite conda precedence with shell dotfile load last
 PJD 25 Jan 2022     - Updated to latest miniconda3 (macOS), conda block updated
+PJD 25 Jan 2022     - Reordered shell dotfiles before conda initialize
 '''
 
 # Create system dependent SYNCPATH
@@ -26,10 +27,21 @@ elif [ `uname` == 'Darwin' ]; then
     export SYNCPATH="$HOME/sync/git/dotfiles/";
 fi
 
+# Load the shell dotfiles last, and then some:
+# * ~/.paths can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you don’t want to commit.
+if shopt -q login_shell; then
+    for file in .{paths,exports,aliases}; do
+    	echo "sourcing file: $SYNCPATH$file"
+    	[ -r "$SYNCPATH$file" ] && [ -f "$SYNCPATH$file" ] && source "$SYNCPATH$file";
+    done;
+    unset file;
+fi
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 # Case Linux
-if [`uname` == 'Linux']; then
+if [ `uname` == 'Linux' ]; then
     __conda_setup="$('/home/durack1/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
@@ -41,7 +53,7 @@ if [`uname` == 'Linux']; then
         fi
     fi
 # Case macOS
-elif [`uname` == 'Darwin']; then
+elif [ `uname` == 'Darwin' ]; then
     __conda_setup="$('/Users/durack1/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
@@ -55,14 +67,3 @@ elif [`uname` == 'Darwin']; then
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-# Load the shell dotfiles last, and then some:
-# * ~/.paths can be used to extend `$PATH`.
-# * ~/.extra can be used for other settings you don’t want to commit.
-if shopt -q login_shell; then
-    for file in .{paths,exports,aliases}; do
-    	echo "sourcing file: $SYNCPATH$file"
-    	[ -r "$SYNCPATH$file" ] && [ -f "$SYNCPATH$file" ] && source "$SYNCPATH$file";
-    done;
-    unset file;
-fi
