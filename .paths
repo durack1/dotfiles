@@ -10,6 +10,7 @@ PJD 22 Jul 2021     - Updated with default MacOS 11.4 path to prevent dupe paths
 PJD 22 Jul 2021     - Added default RHEL7/detect paths
 PJD 15 Sep 2021     - Updated to ensure /usr/bin comes first dbus-daemon issue with Anaconda3 install precedence over sys install
                       Removed from MACPATH, RHELPATH
+PJD 29 Apr 2022     - Updated p7zip_16.02 to 7zip21.07 binary install/redhat7
 '''
 
 export MACPATH='/usr/local/bin:/bin:/usr/sbin:/sbin'  # Default MacOS11.4 path
@@ -18,6 +19,6 @@ if [ `uname` == 'Darwin' ]; then
 	export PATH="/usr/bin:$HOME/sync/bin/macos11.4:$MACPATH"
 elif [ `uname` == 'Linux' ]; then
 	export PATH="$HOME/bin"
-	export PATH="/usr/bin:$PATH:$HOME/bin/downloads/p7zip16.02/191120_build/p7zip_16.02/bin:$RHELPATH"
+	export PATH="/usr/bin:$PATH:$HOME/bin/redhat7:$RHELPATH"
 fi
 echo "PATH: $PATH"
