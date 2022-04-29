@@ -20,7 +20,7 @@ if [ `uname` == 'Darwin' ]; then
     export HOMEPREFIX=/Users/durack1/sync/
 elif [ `uname` == 'Linux' ]; then
     export HOMEPREFIX=/home/durack1/
-    export LD_LIBRARY_PATH=${HOMEPREFIX}anaconda/lib
+    export LD_LIBRARY_PATH=${HOMEPREFIX}anaconda3/lib
 fi
 export PYTHONPATH=$HOMEPREFIX'git/cmip3:'$HOMEPREFIX'git/cmip5:'$HOMEPREFIX'git/Density_bining:'$HOMEPREFIX'git/durolib/durolib'
 
