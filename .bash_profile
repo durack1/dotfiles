@@ -18,6 +18,7 @@ PJD 26 Jul 2021     - Convert echos to only interactive (not login) shell
 PJD 15 Sep 2021     - Updated some path issues across files, overwrite conda precedence with shell dotfile load last
 PJD 25 Jan 2022     - Updated to latest miniconda3 (macOS), conda block updated
 PJD 25 Jan 2022     - Reordered shell dotfiles before conda initialize
+PJD  5 Aug 2022     - Removed shopt if statement from path,exports,aliases source as not working on linux
 '''
 
 # Create system dependent SYNCPATH
@@ -30,13 +31,11 @@ fi
 # Load the shell dotfiles last, and then some:
 # * ~/.paths can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-if shopt -q login_shell; then
-    for file in .{paths,exports,aliases}; do
-    	echo "sourcing file: $SYNCPATH$file"
-    	[ -r "$SYNCPATH$file" ] && [ -f "$SYNCPATH$file" ] && source "$SYNCPATH$file";
-    done;
-    unset file;
-fi
+for file in .{paths,exports,aliases}; do
+	echo "sourcing: $SYNCPATH$file"
+	[ -r "$SYNCPATH$file" ] && [ -f "$SYNCPATH$file" ] && source "$SYNCPATH$file";
+done;
+unset file;
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
