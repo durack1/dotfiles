@@ -20,6 +20,7 @@ PJD 25 Jan 2022     - Updated to latest miniconda3 (macOS), conda block updated
 PJD 25 Jan 2022     - Reordered shell dotfiles before conda initialize
 PJD  5 Aug 2022     - Removed shopt if statement from path,exports,aliases source as not working on linux
 PJD  8 Aug 2022     - conda initialize block updated by mambaforge 4.13.0-1
+PJD  8 Aug 2022     - Turned off path echos, rsync protocol version mismatch https://serverfault.com/questions/304125/rsync-seems-incompatible-with-bashrc-causes-is-your-shell-clean
 '''
 
 # Create system dependent SYNCPATH
@@ -33,7 +34,7 @@ fi
 # * ~/.paths can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
 for file in .{paths,exports,aliases}; do
-	echo "sourcing: $SYNCPATH$file"
+	#echo "sourcing: $SYNCPATH$file"
 	[ -r "$SYNCPATH$file" ] && [ -f "$SYNCPATH$file" ] && source "$SYNCPATH$file";
 done;
 unset file;

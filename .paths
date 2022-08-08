@@ -15,6 +15,7 @@ PJD 24 May 2022     - Added macos11.6 preceding macos11.4
 PJD 24 May 2022     - Added LD_LIBRARY_PATH anaconda libraries for 7z*
 PJD  8 Aug 2022     - Updated/moved LD_LIBRARY_PATH exports to .exports
 PJD  8 Aug 2022     - Drop PATH def for macos11.4
+PJD  8 Aug 2022     - Turned off path echos, rsync protocol version mismatch https://serverfault.com/questions/304125/rsync-seems-incompatible-with-bashrc-causes-is-your-shell-clean
 '''
 
 export MACPATH='/usr/local/bin:/bin:/usr/sbin:/sbin'  # Default MacOS11.4 path
@@ -25,4 +26,4 @@ elif [ `uname` == 'Linux' ]; then
 	export PATH="$HOME/bin"
 	export PATH="/usr/bin:$PATH:$HOME/bin/redhat7:$RHELPATH"
 fi
-echo "PATH: $PATH"
+#echo "PATH: $PATH"  # turn off echo commands on linux - rsync protocol version mismatch
