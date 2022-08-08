@@ -19,6 +19,7 @@ PJD 15 Sep 2021     - Updated some path issues across files, overwrite conda pre
 PJD 25 Jan 2022     - Updated to latest miniconda3 (macOS), conda block updated
 PJD 25 Jan 2022     - Reordered shell dotfiles before conda initialize
 PJD  5 Aug 2022     - Removed shopt if statement from path,exports,aliases source as not working on linux
+PJD  8 Aug 2022     - conda initialize block updated by mambaforge 4.13.0-1
 '''
 
 # Create system dependent SYNCPATH
@@ -39,30 +40,19 @@ unset file;
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-# Case Linux
-if [ `uname` == 'Linux' ]; then
-    __conda_setup="$('/home/durack1/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
+__conda_setup="$('/Users/durack1/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/durack1/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/Users/durack1/mambaforge/etc/profile.d/conda.sh"
     else
-        if [ -f "/home/durack1/anaconda3/etc/profile.d/conda.sh" ]; then
-            . "/home/durack1/anaconda3/etc/profile.d/conda.sh"
-        else
-            export PATH="/home/durack1/anaconda3/bin:$PATH"
-        fi
-    fi
-# Case macOS
-elif [ `uname` == 'Darwin' ]; then
-    __conda_setup="$('/Users/durack1/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "/Users/durack1/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "/Users/durack1/miniconda3/etc/profile.d/conda.sh"
-        else
-            export PATH="/Users/durack1/miniconda3/bin:$PATH"
-        fi
+        export PATH="/Users/durack1/mambaforge/bin:$PATH"
     fi
 fi
 unset __conda_setup
+
+if [ -f "/Users/durack1/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "/Users/durack1/mambaforge/etc/profile.d/mamba.sh"
+fi
 # <<< conda initialize <<<
