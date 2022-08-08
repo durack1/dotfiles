@@ -14,12 +14,13 @@ PJD 29 Apr 2022     - Updated p7zip_16.02 to 7zip21.07 binary install/redhat7
 PJD 24 May 2022     - Added macos11.6 preceding macos11.4
 PJD 24 May 2022     - Added LD_LIBRARY_PATH anaconda libraries for 7z*
 PJD  8 Aug 2022     - Updated/moved LD_LIBRARY_PATH exports to .exports
+PJD  8 Aug 2022     - Drop PATH def for macos11.4
 '''
 
 export MACPATH='/usr/local/bin:/bin:/usr/sbin:/sbin'  # Default MacOS11.4 path
 export RHELPATH='/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/lpp/mmfs/bin'  # Default Detect/RHEL7 path
 if [ `uname` == 'Darwin' ]; then
-	export PATH="/usr/bin:$HOME/sync/bin/macos11.6:$HOME/sync/bin/macos11.4:$MACPATH"
+	export PATH="/usr/bin:$HOME/sync/bin/macos11.6:$MACPATH"
 elif [ `uname` == 'Linux' ]; then
 	export PATH="$HOME/bin"
 	export PATH="/usr/bin:$PATH:$HOME/bin/redhat7:$RHELPATH"
