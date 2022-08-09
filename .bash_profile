@@ -21,6 +21,7 @@ PJD 25 Jan 2022     - Reordered shell dotfiles before conda initialize
 PJD  5 Aug 2022     - Removed shopt if statement from path,exports,aliases source as not working on linux
 PJD  8 Aug 2022     - conda initialize block updated by mambaforge 4.13.0-1
 PJD  8 Aug 2022     - Turned off path echos, rsync protocol version mismatch https://serverfault.com/questions/304125/rsync-seems-incompatible-with-bashrc-causes-is-your-shell-clean
+PJD  9 Aug 2022     - Added back conda_setup block for linux - home/durack1/anaconda3
 '''
 
 # Create system dependent SYNCPATH
@@ -39,7 +40,7 @@ for file in .{paths,exports,aliases}; do
 done;
 unset file;
 
-# >>> conda initialize >>>
+# >>> conda initialize >>> ml-9953359
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/durack1/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
@@ -55,5 +56,22 @@ unset __conda_setup
 
 if [ -f "/Users/durack1/mambaforge/etc/profile.d/mamba.sh" ]; then
     . "/Users/durack1/mambaforge/etc/profile.d/mamba.sh"
+fi
+
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/durack1/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/durack1/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/durack1/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/durack1/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/home/durack1/anaconda3/etc/profile.d/mamba.sh" ]; then
+    . "/home/durack1/anaconda3/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
