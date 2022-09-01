@@ -27,7 +27,7 @@ alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias s="cd ~/sync"
 alias g="git"
-alias myextip=="echo `curl ifconfig.me` - curl ifconfig.me"
+alias myextip='echo `curl ifconfig.me` - curl ifconfig.me'
 
 # Rsync aliases for quick use
 alias rsynct="rsync -n -vruti --delete --inplace ${MACOSEXCLUDELIST}" ; # Run rsync with common arguments for trusty sync in test mode
