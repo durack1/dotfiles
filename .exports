@@ -11,6 +11,7 @@ PJD 22 Jul 2021     - Updated with PYTHONPATH; Updated with HOMEPREFIX
 PJD 26 Jul 2021     - Update HOMEPREFIX to be exported
 PJD 29 Apr 2022     - Updated Linux to export LD_LIBRARY_PATH to solve 7zz libstdc++.so.6 incompatibilities with RHEL7.9
 PJD  8 Aug 2022     - Updated with LD_LIBRARY_PATH defs, moved from .paths (mambaforge replaced miniconda on macOS)
+PJD  1 Sep 2022     - Updated LD_LIBRARY_PATH defs, now on mambaforge across all platforms
 '''
 
 # Set MacOS filesystem exclusions for rsync
@@ -18,14 +19,15 @@ export MACOSEXCLUDELIST='--exclude=.DS_Store --exclude=.directory --exclude=.Doc
 
 # Set system-dependent python paths
 if [ `uname` == 'Darwin' ]; then
-    export HOMEPREFIX=/Users/durack1/sync/
-    export LD_LIBRARY_PATH=$HOME/mambaforge/lib
+    export HOMEPREFIX=/Users/durack1/sync
 elif [ `uname` == 'Linux' ]; then
-    export HOMEPREFIX=/home/durack1/
-    export LD_LIBRARY_PATH=${HOMEPREFIX}anaconda3/lib
+    export HOME=/home/durack1
+    export HOMEPREFIX=/home/durack1
 fi
-export PYTHONPATH=$HOMEPREFIX'git/cmip3:'$HOMEPREFIX'git/cmip5:'$HOMEPREFIX'git/Density_bining:'$HOMEPREFIX'git/durolib/durolib'
 
+# Generic platform exports
+export PYTHONPATH=$HOMEPREFIX'/git/cmip3:'$HOMEPREFIX'/git/cmip5:'$HOMEPREFIX'/git/Density_bining:'$HOMEPREFIX'/git/durolib/durolib'
+export LD_LIBRARY_PATH=${HOME}/mambaforge/lib  ; # Required for 7zz to function on RHEL 7.x
 
 #---------- Other inherited exports
 
