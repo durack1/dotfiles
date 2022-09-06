@@ -10,6 +10,7 @@ PJD  2 Jul 2021     - Added cl
 PJD  9 Jul 2021     - Updated s
 PJD 22 Jul 2021     - Added work
 PJD  1 Sep 2022     - Added myextip; updated work
+PJD  6 Sep 2022     - Added macOS dependent s alias
 '''
 ### General aliases
 
@@ -25,7 +26,6 @@ alias -- -="cd -"
 alias cl="clear"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias s="cd ~/sync"
 alias g="git"
 alias myextip='echo `curl ifconfig.me` - curl ifconfig.me'
 
@@ -39,9 +39,13 @@ alias rsynctrnd="rsync -vruti --inplace ${MACOSEXCLUDELIST}" ; # Run rsync with 
 
 # Assume LLNL linux machines
 if [ `uname` == 'Linux' ]; then
-    alias work="cd ~/p-work/; pwd"
+    alias work="cd ~/p-work; pwd"
 fi
 
+# Assume macOS laptop
+if [ `uname` == 'Darwin' ]; then
+    alias s="cd ~/sync; pwd"
+fi
 
 #---------- Harvested from other sources
 
