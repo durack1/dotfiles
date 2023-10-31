@@ -11,6 +11,7 @@ PJD  9 Jul 2021     - Updated s
 PJD 22 Jul 2021     - Added work
 PJD  1 Sep 2022     - Added myextip; updated work
 PJD  6 Sep 2022     - Added macOS dependent s alias
+PJD 31 Oct 2023 	- Add detect:jupyterlab alias for macbook
 '''
 ### General aliases
 
@@ -40,11 +41,13 @@ alias rsynctrnd="rsync -vruti --inplace ${MACOSEXCLUDELIST}" ; # Run rsync with 
 # Assume LLNL linux machines
 if [ `uname` == 'Linux' ]; then
     alias work="cd ~/p-work; pwd"
+	alias jl="mamba activate xcd060 ; jupyter lab --no-browser --port=8892" ; # initalize xcdat 0.6.0 env, and start a headless jupyter lab session
 fi
 
 # Assume macOS laptop
 if [ `uname` == 'Darwin' ]; then
     alias s="cd ~/sync; pwd"
+	alias detjl="ssh -L 8892:localhost:8892 detect" ; # connect to jupyterlab instance on detect - requires to be running
 fi
 
 #---------- Harvested from other sources
