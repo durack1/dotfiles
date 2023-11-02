@@ -12,6 +12,7 @@ PJD 22 Jul 2021     - Added work
 PJD  1 Sep 2022     - Added myextip; updated work
 PJD  6 Sep 2022     - Added macOS dependent s alias
 PJD 31 Oct 2023 	- Add detect:jupyterlab alias for macbook
+PJD  1 Nov 2023 	- Update detect call to full domain
 '''
 ### General aliases
 
@@ -47,7 +48,7 @@ fi
 # Assume macOS laptop
 if [ `uname` == 'Darwin' ]; then
     alias s="cd ~/sync; pwd"
-	alias detjl="ssh -L 8892:localhost:8892 detect" ; # connect to jupyterlab instance on detect - requires to be running
+	alias detjl="ssh -L 8892:localhost:8892 detect.llnl.gov" ; # connect to jupyterlab instance on detect - requires to be running
 fi
 
 #---------- Harvested from other sources
