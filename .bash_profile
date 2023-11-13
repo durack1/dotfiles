@@ -25,6 +25,7 @@ PJD  9 Aug 2022     - Added back conda_setup block for linux - /home/durack1/ana
 PJD  9 Aug 2022     - Updated for mambaforge-4.13.0-1 update /home/durack1/mambaforge
 PJD  1 Sep 2022     - Update conda_setup to use $HOME rather than platform specific paths
 PJD 31 Oct 2023     - Update to deal with Mambaforge mamba-only initialize
+PJD 13 Nov 2023     - Updated conda initialize to use $HOME for multi-platform
 '''
 
 # Create system dependent SYNCPATH
@@ -46,19 +47,19 @@ unset file;
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/durack1/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$($HOME'/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/durack1/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/home/durack1/mambaforge/etc/profile.d/conda.sh"
+    if [ -f "$HOME/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "$HOME/mambaforge/etc/profile.d/conda.sh"
     else
-        export PATH="/home/durack1/mambaforge/bin:$PATH"
+        export PATH="$HOME/mambaforge/bin:$PATH"
     fi
 fi
 unset __conda_setup
 
-if [ -f "/home/durack1/mambaforge/etc/profile.d/mamba.sh" ]; then
-    . "/home/durack1/mambaforge/etc/profile.d/mamba.sh"
+if [ -f "$HOME/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "$HOME/mambaforge/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
