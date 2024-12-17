@@ -15,6 +15,7 @@ PJD 31 Oct 2023 	- Add detect:jupyterlab alias for macbook
 PJD  1 Nov 2023 	- Update detect call to full domain
 PJD 27 Nov 2023 	- Updated dig call to use google servers and force ipv4
 PJD 28 Feb 2024 	- Updated jl mamba env to latest - xcd060->xcd061nc
+PJD 17 Dec 2024 	- Updated jl mamba env to latest - xcd061nc->xcd072nctax
 '''
 ### General aliases
 
@@ -44,7 +45,7 @@ alias rsynctrnd="rsync -vruti --inplace ${MACOSEXCLUDELIST}" ; # Run rsync with 
 # Assume LLNL linux machines
 if [ `uname` == 'Linux' ]; then
     alias work="cd ~/p-work; pwd"
-	alias jl="mamba activate xcd061nctax ; jupyter lab --no-browser --port=8892" ; # initalize xcdat 0.6.1 nctax env, and start a headless jupyter lab session
+	alias jl="mamba activate xcd072nctax ; jupyter lab --no-browser --port=8892" ; # initialize xcdat 0.7.2 nctax env, and start a headless jupyter lab session
 fi
 
 # Assume macOS laptop
