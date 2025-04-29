@@ -13,6 +13,7 @@ PJD 29 Apr 2022     - Updated Linux to export LD_LIBRARY_PATH to solve 7zz libst
 PJD  8 Aug 2022     - Updated with LD_LIBRARY_PATH defs, moved from .paths (mambaforge replaced miniconda on macOS)
 PJD  1 Sep 2022     - Updated LD_LIBRARY_PATH defs, now on mambaforge across all platforms
 PJD 16 Nov 2022     - Updated path removing Density_bining and adding xsearch
+PJD 29 Apr 2025     - Updated mambaforge -> miniforge3-25.3.0-1; need to update detect envs
 '''
 
 # Set MacOS filesystem exclusions for rsync
@@ -28,7 +29,7 @@ fi
 
 # Generic platform exports
 export PYTHONPATH=$HOMEPREFIX'/git/cmip3:'$HOMEPREFIX'/git/cmip5:'$HOMEPREFIX'/git/durolib/durolib:'$HOMEPREFIX'/git/xsearch:'
-export LD_LIBRARY_PATH=${HOME}/mambaforge/lib  ; # Required for 7zz to function on RHEL 7.x
+export LD_LIBRARY_PATH=${HOME}/miniforge3/lib  ; # Required for 7zz to function on RHEL 7.x
 
 #---------- Other inherited exports
 
