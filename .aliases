@@ -4,18 +4,20 @@
 : '''
 This file sets aliases across systems, loaded by the .bash_profile file
 
-PJD 20 May 2020     - Initialized file
-PJD  1 Jul 2021     - Updated with rsync aliases
-PJD  2 Jul 2021     - Added cl
-PJD  9 Jul 2021     - Updated s
-PJD 22 Jul 2021     - Added work
-PJD  1 Sep 2022     - Added myextip; updated work
-PJD  6 Sep 2022     - Added macOS dependent s alias
-PJD 31 Oct 2023 	- Add detect:jupyterlab alias for macbook
-PJD  1 Nov 2023 	- Update detect call to full domain
-PJD 27 Nov 2023 	- Updated dig call to use google servers and force ipv4
-PJD 28 Feb 2024 	- Updated jl mamba env to latest - xcd060->xcd061nc
-PJD 17 Dec 2024 	- Updated jl mamba env to latest - xcd061nc->xcd072nctax
+PJD 20 May 2020 - Initialized file
+PJD  1 Jul 2021 - Updated with rsync aliases
+PJD  2 Jul 2021 - Added cl
+PJD  9 Jul 2021 - Updated s
+PJD 22 Jul 2021 - Added work
+PJD  1 Sep 2022 - Added myextip; updated work
+PJD  6 Sep 2022 - Added macOS dependent s alias
+PJD 31 Oct 2023 - Add detect:jupyterlab alias for macbook
+PJD  1 Nov 2023 - Update detect call to full domain
+PJD 27 Nov 2023 - Updated dig call to use google servers and force ipv4
+PJD 28 Feb 2024 - Updated jl mamba env to latest - xcd060->xcd061nc
+PJD 17 Dec 2024 - Updated jl mamba env to latest - xcd061nc->xcd072nctax
+PJD 11 Jun 2025 - Updated jl mamba env to latest - xcd072nctax->cmor390xcd080
+PJD 11 Jun 2025 - Added machine aliases
 '''
 ### General aliases
 
@@ -45,7 +47,7 @@ alias rsynctrnd="rsync -vruti --inplace ${MACOSEXCLUDELIST}" ; # Run rsync with 
 # Assume LLNL linux machines
 if [ `uname` == 'Linux' ]; then
     alias work="cd ~/p-work; pwd"
-	alias jl="mamba activate xcd072nctax ; jupyter lab --no-browser --port=8892" ; # initialize xcdat 0.7.2 nctax env, and start a headless jupyter lab session
+	alias jl="mamba activate cmor390xcd080 ; jupyter lab --no-browser --port=8892" ; # initialize xcdat 0.7.2 nctax env, and start a headless jupyter lab session
 fi
 
 # Assume macOS laptop
@@ -53,6 +55,12 @@ if [ `uname` == 'Darwin' ]; then
     alias s="cd ~/sync; pwd"
 	alias detjl="ssh -L 8892:localhost:8892 detect.llnl.gov" ; # connect to jupyterlab instance on detect - requires to be running
 fi
+
+### Machine shortcuts
+alias det="ssh detect.llnl.gov"
+alias gat="ssh gates.llnl.gov"
+alias oslic="ssh oslic.llnl.gov"
+alias per="ssh perlmutter.nersc.gov"
 
 #---------- Harvested from other sources
 
