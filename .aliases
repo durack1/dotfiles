@@ -17,7 +17,8 @@ PJD 27 Nov 2023 - Updated dig call to use google servers and force ipv4
 PJD 28 Feb 2024 - Updated jl mamba env to latest - xcd060->xcd061nc
 PJD 17 Dec 2024 - Updated jl mamba env to latest - xcd061nc->xcd072nctax
 PJD 11 Jun 2025 - Updated jl mamba env to latest - xcd072nctax->cmor390xcd080
-PJD 11 Jun 2025 - Added machine aliases
+PJD 11 Jun 2025 - Added NERSC perlmutter alias
+PJD 21 Jul 2025 - Added OLCF opendtn alias
 '''
 ### General aliases
 
@@ -61,6 +62,7 @@ alias det="ssh detect.llnl.gov"
 alias gat="ssh gates.llnl.gov"
 alias oslic="ssh oslic.llnl.gov"
 alias per="ssh perlmutter.nersc.gov"
+alias olcf="ssh opendtn.ccs.ornl.gov"
 
 #---------- Harvested from other sources
 
