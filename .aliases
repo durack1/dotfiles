@@ -54,15 +54,17 @@ fi
 # Assume macOS laptop
 if [ `uname` == 'Darwin' ]; then
     alias s="cd ~/sync; pwd"
-	alias detjl="ssh -L 8892:localhost:8892 detect.llnl.gov" ; # connect to jupyterlab instance on detect - requires to be running
+	alias detjl="ssh -L 8892:localhost:8892 durack1@detect.llnl.gov" ; # connect to jupyterlab instance on detect - requires to be running
 fi
 
 ### Machine shortcuts
-alias det="ssh detect.llnl.gov"
-alias gat="ssh gates.llnl.gov"
-alias oslic="ssh oslic.llnl.gov"
-alias per="ssh perlmutter.nersc.gov"
-alias olcf="ssh opendtn.ccs.ornl.gov"
+alias det="ssh -Y durack1@detect.llnl.gov"
+alias gad="ssh -Y pjd599@gadi.nci.org.au"
+alias gat="ssh -Y durack1@gates.llnl.gov"
+alias olcf="ssh -Y durack1@opendtn.ccs.ornl.gov"
+alias oslic="ssh -Y durack1@oslic.llnl.gov"
+alias paw="ssh -Y pauljdurack@setonix.pawsey.org.au"
+alias per="ssh -Y durack1@perlmutter.nersc.gov"
 
 #---------- Harvested from other sources
 

@@ -28,6 +28,7 @@ PJD 31 Oct 2023     - Update to deal with Mambaforge mamba-only initialize
 PJD 13 Nov 2023     - Updated conda initialize to use $HOME for multi-platform
 PJD  4 Oct 2024     - Updated to latest miniforge3-24.7.1-2 (mambaforge deprecated)
 PJD 29 Apr 2025     - Updated to latest miniforge3-25.3.0-1; updated single to double quotes for mamba calls
+PJD 10 Dec 2025     - Updated to latest miniforge3-25.9.1-0;
 '''
 
 # Create system dependent SYNCPATH
@@ -64,8 +65,8 @@ unset __conda_setup
 
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba shell init' !!
-export MAMBA_EXE="$HOME/miniforge3/bin/mamba";
-export MAMBA_ROOT_PREFIX="$HOME/miniforge3";
+export MAMBA_EXE='$HOME/miniforge3/bin/mamba';
+export MAMBA_ROOT_PREFIX='$HOME/miniforge3';
 __mamba_setup="$("$MAMBA_EXE" shell hook --shell bash --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__mamba_setup"
