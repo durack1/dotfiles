@@ -44,17 +44,20 @@ fi
 # * ~/.paths can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
 for file in .{paths,exports,aliases}; do
-	#echo "sourcing: $SYNCPATH$file"
+	# echo "sourcing: $SYNCPATH$file"
 	[ -r "$SYNCPATH$file" ] && [ -f "$SYNCPATH$file" ] && source "$SYNCPATH$file";
 done;
 unset file;
 
 # Load ssh-agent to aid git functionality
 eval "$(ssh-agent -s)"
+# echo "loading ssh-agent"
 # ssh-add ~/.ssh/*
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
+# echo "configuring conda"
+# echo "HOME:$HOME"
 __conda_setup="$('$HOME/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
@@ -70,8 +73,9 @@ unset __conda_setup
 
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba shell init' !!
-export MAMBA_EXE='$HOME/miniforge3/bin/mamba';
-export MAMBA_ROOT_PREFIX='$HOME/miniforge3';
+export MAMBA_EXE="$HOME/miniforge3/bin/mamba";
+# export MAMBA_ROOT_PREFIX='$HOME/miniforge3';  # default
+export MAMBA_ROOT_PREFIX="$HOME/.local/share/mamba";
 __mamba_setup="$("$MAMBA_EXE" shell hook --shell bash --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__mamba_setup"
