@@ -30,6 +30,7 @@ PJD  4 Oct 2024     - Updated to latest miniforge3-24.7.1-2 (mambaforge deprecat
 PJD 29 Apr 2025     - Updated to latest miniforge3-25.3.0-1; updated single to double quotes for mamba calls
 PJD 10 Dec 2025     - Updated to latest miniforge3-25.9.1-0;
 PJD 23 May 2026     - Updated to latest Miniforge3-26.3.2-2 Win11/trusty3
+PJD 23 May 2026     - Updated with ssh-agent launch
 '''
 
 # Create system dependent SYNCPATH
@@ -47,6 +48,10 @@ for file in .{paths,exports,aliases}; do
 	[ -r "$SYNCPATH$file" ] && [ -f "$SYNCPATH$file" ] && source "$SYNCPATH$file";
 done;
 unset file;
+
+# Load ssh-agent to aid git functionality
+eval "$(ssh-agent -s)"
+# ssh-add ~/.ssh/*
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
