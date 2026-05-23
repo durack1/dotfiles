@@ -29,6 +29,7 @@ PJD 13 Nov 2023     - Updated conda initialize to use $HOME for multi-platform
 PJD  4 Oct 2024     - Updated to latest miniforge3-24.7.1-2 (mambaforge deprecated)
 PJD 29 Apr 2025     - Updated to latest miniforge3-25.3.0-1; updated single to double quotes for mamba calls
 PJD 10 Dec 2025     - Updated to latest miniforge3-25.9.1-0;
+PJD 23 May 2026     - Updated to latest Miniforge3-26.3.2-2 Win11/trusty3
 '''
 
 # Create system dependent SYNCPATH
@@ -36,7 +37,6 @@ if [ `uname` == 'Darwin' ]; then
     export SYNCPATH="$HOME/sync/git/dotfiles/";
 elif [ `uname` == 'Linux' ]; then
     export SYNCPATH="$HOME/git/dotfiles/";
-
 fi
 
 # Load the shell dotfiles last, and then some:
