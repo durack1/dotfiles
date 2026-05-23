@@ -16,10 +16,12 @@ PJD 24 May 2022     - Added LD_LIBRARY_PATH anaconda libraries for 7z*
 PJD  8 Aug 2022     - Updated/moved LD_LIBRARY_PATH exports to .exports
 PJD  8 Aug 2022     - Drop PATH def for macos11.4
 PJD  8 Aug 2022     - Turned off path echos, rsync protocol version mismatch https://serverfault.com/questions/304125/rsync-seems-incompatible-with-bashrc-causes-is-your-shell-clean
+PJD 23 May 2026 	- Updated for Win11/trusty3
 '''
-
+# set default systems
 export MACPATH='/usr/local/bin:/bin:/usr/sbin:/sbin'  # Default MacOS11.4 path
 export RHELPATH='/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/lpp/mmfs/bin'  # Default Detect/RHEL7 path
+export WINPATH='/home/duro:/usr/bin:/usr/sbin'  # Default Win11 26200/25H2 WSL Ubuntu 24.04.4 LTS
 if [ `uname` == 'Darwin' ]; then
 	export PATH="/usr/bin:$HOME/sync/bin/macos11.6:$MACPATH"
 elif [ `uname` == 'Linux' ]; then

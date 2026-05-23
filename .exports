@@ -14,6 +14,7 @@ PJD  8 Aug 2022     - Updated with LD_LIBRARY_PATH defs, moved from .paths (mamb
 PJD  1 Sep 2022     - Updated LD_LIBRARY_PATH defs, now on mambaforge across all platforms
 PJD 16 Nov 2022     - Updated path removing Density_bining and adding xsearch
 PJD 29 Apr 2025     - Updated mambaforge -> miniforge3-25.3.0-1; need to update detect envs
+PJD 23 May 2026 	- Updated for Win11/trusty3
 '''
 
 # Set MacOS filesystem exclusions for rsync
@@ -23,12 +24,18 @@ export MACOSEXCLUDELIST='--exclude=.DS_Store --exclude=.directory --exclude=.Doc
 if [ `uname` == 'Darwin' ]; then
     export HOMEPREFIX=/Users/durack1/sync
 elif [ `uname` == 'Linux' ]; then
-    export HOME=/home/durack1
-    export HOMEPREFIX=/home/durack1
+    if [ `uname -n` == 'trusty3' ]; then
+        export HOME=/home/duro
+        export HOMEPREFIX=/home/duro
+    else
+        # case LLNL RHEL machines
+        export HOME=/home/durack1
+        export HOMEPREFIX=/home/durack1
+        export PYTHONPATH=$HOMEPREFIX'/git/cmip3:'$HOMEPREFIX'/git/cmip5:'$HOMEPREFIX'/git/durolib/durolib:'$HOMEPREFIX'/git/xsearch:'
+    fi
 fi
 
 # Generic platform exports
-export PYTHONPATH=$HOMEPREFIX'/git/cmip3:'$HOMEPREFIX'/git/cmip5:'$HOMEPREFIX'/git/durolib/durolib:'$HOMEPREFIX'/git/xsearch:'
 export LD_LIBRARY_PATH=${HOME}/miniforge3/lib  ; # Required for 7zz to function on RHEL 7.x
 
 #---------- Other inherited exports
