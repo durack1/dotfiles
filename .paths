@@ -20,16 +20,16 @@ PJD 23 May 2026 	- Updated for Win11/trusty3
 PJD 24 May 2026 	- Updated for WSL Ubuntu 24.04.4 LTS, adding ~/.local/bin
 '''
 # set default systems
-export MACPATH='/usr/local/bin:/bin:/usr/sbin:/sbin'  # Default MacOS11.4 path
+export MACPATH='/bin:/usr/bin:/usr/local/bin:/usr/sbin:/sbin'  # Default MacOS11.4 path
 export RHELPATH='/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/lpp/mmfs/bin'  # Default Detect/RHEL7 path
-export WINPATH='/home/duro:/usr/bin:/usr/sbin'  # Default Win11 26200/25H2 WSL Ubuntu 24.04.4 LTS
+export WINPATH='/bin:/usr/bin:/usr/sbin'  # Default Win11 26200/25H2 WSL Ubuntu 24.04.4 LTS
 if [ `uname` == 'Darwin' ]; then
 	export PATH="/usr/bin:$HOME/sync/bin/macos11.6:$MACPATH"
 elif [ `uname` == 'Linux' ]; then
 	if [ `uname -n` == 'trusty3' ]; then
-		export PATH="/usr/bin:$HOME/.local/bin:$HOME/sync/bin:$WINPATH"
+		export PATH="$WINPATH:$HOME/.local/bin:$PATH:$HOME/sync/bin"
+	else
+		export PATH="$RHELPATH:/usr/bin:$PATH:$HOME/bin/redhat7"
 	fi
-	export PATH="$HOME/bin"
-	export PATH="/usr/bin:$PATH:$HOME/bin/redhat7:$RHELPATH"
 fi
 #echo "PATH: $PATH"  # turn off echo commands on linux - rsync protocol version mismatch
